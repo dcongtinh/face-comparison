@@ -23,7 +23,7 @@ encodings = importFaceEncoded(file_encodings)
 names = importFaceEncoded(file_names)
 
 dateStr = time.strftime('%Y-%m-%d')
-attend_dir = 'Attendence/' + dateStr
+attend_dir = 'Attendance/' + dateStr
 
 if not os.path.isdir(attend_dir):
     os.mkdir(attend_dir)
@@ -127,7 +127,7 @@ while True:
     face_encodings = face_recognition.face_encodings(imgS, face_locations)
 
     img = draw_box(img, face_encodings, face_locations)
-    cv2.imshow('Webcam', img)
+    cv2.imshow('ATTENDANCE', img)
     key = cv2.waitKey(1) & 0xFF
 
     # if the `q` key was pressed, break from the loop

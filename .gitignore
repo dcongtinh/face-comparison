@@ -1,2 +1,3 @@
-/datasets/augmented
-/Attendence
+/datasets
+/Attendance
+/__pycache__

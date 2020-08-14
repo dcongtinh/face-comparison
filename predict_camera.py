@@ -25,7 +25,7 @@ encodings = importFaceEncoded(file_encodings)
 names = importFaceEncoded(file_names)
 
 dateStr = time.strftime('%Y-%m-%d')
-attend_dir = 'Attendence/' + dateStr
+attend_dir = 'Attendance/' + dateStr
 if not os.path.isdir(attend_dir):
     os.mkdir(attend_dir)
 
@@ -110,7 +110,7 @@ def draw_box(img, face_encodings, face_locations):
     return img
 
 
-url = 'http://192.168.10.112:8080/shot.jpg'
+url = 'http://172.20.10.8:8080/shot.jpg'
 print("[INFO] starting video stream...")
 # cap = cv2.VideoCapture('http://192.168.10.83:8080/video')
 # if (cap.isOpened() == False):
@@ -127,6 +127,7 @@ while True:
     # Finally decode the array to OpenCV usable format ;)
     img = cv2.imdecode(imgNp, -1)
     # ---- End Use urllib ----
+    # img = cv2.flip(img, 1)
     img = cv2.resize(img, (0, 0), None, scale, scale)
 
     imgS = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -134,11 +135,11 @@ while True:
     face_encodings = face_recognition.face_encodings(imgS, face_locations)
 
     img = draw_box(img, face_encodings, face_locations)
-    cv2.imshow('Webcam', img)
+    cv2.imshow('Attendance', img)
     key = cv2.waitKey(1) & 0xFF
 
     if key == ord("q"):
         break
 
-cap.release()
+# cap.release()
 cv2.destroyAllWindows()
